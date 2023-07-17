@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { Expand, ShoppingCart } from 'lucide-react'
 
 import { Product } from '@/types';
@@ -12,8 +13,15 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
+  const router = useRouter()
+  
+  const handleClick = () => {
+    router.push(`/product/${data?.id}`)
+  }
+
   return (
     <div
+      onClick={handleClick}
       className="
         bg-white
         group
